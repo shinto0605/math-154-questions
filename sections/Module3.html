@@ -15,77 +15,99 @@
 <script src="../assets/site.js" defer></script>
 </head>
 <body>
-<header class="header">
-  <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
-  <h1 class="title">Module 3 — Limits & Continuity</h1>
-  <p class="subtitle"><a href="../index.html" class="muted">⟵ Home</a></p>
-</header>
+  <header class="header">
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <h1 class="title">Module 3 — Limits & Continuity</h1>
+    <p class="subtitle"><a href="../index.html" class="muted">⟵ Home</a></p>
+  </header>
 
-<div class="wrap">
-  <aside id="sidebar" class="sidebar">
-    <div class="toc">
-      <h3>On this page</h3>
+  <!-- LAYOUT WRAPPER -->
+  <div class="wrap">
 
-      <details class="toc-sec">
-        <summary><a href="#CoreConcepts">3.1 Core Concepts</a></summary>
-        <ul>
-          <li><a href="#theo-limit">Theorem — Limit</a></li>
-          <li><a href="#method-inf-limit">Method — Limit at Infinity</a></li>
-          <li><a href="#def-continuity">Definition — Continuity</a></li>
-          <li><a href="#theo-ivt">Theorem — IVT (Existence of zeros)</a></li>
-          <li><a href="#method-eval-limits">Method — Evaluating the Limits</a></li>
-        </ul>
-      </details>
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="toc">
+       <h3>Contents</h3>
 
-      <details class="toc-sec">
-        <summary><a href="#Easy">3.2 Easy</a></summary>
-        <ul class="sublist">
-          <li><a href="#module3-easy-1">Easy — 1</a></li>
-          <li><a href="#module3-easy-2">Easy — 2</a></li>
-          <li><a href="#module3-easy-3">Easy — 3</a></li>
-          <li><a href="#module3-easy-4">Easy — 4</a></li>
-          <li><a href="#module3-easy-5">Easy — 5</a></li>
-          <li><a href="#module3-easy-6">Easy — 6</a></li>
-          <li><a href="#module3-easy-7">Easy — 7</a></li>
-          <li><a href="#module3-easy-8">Easy — 8</a></li>
-          <li><a href="#module3-easy-9">Easy — 9</a></li>
-          <li><a href="#module3-easy-10">Easy — 10</a></li>
-        </ul>
-      </details>
+        <details class="toc-sec" >
+          <summary>Show / Hide</summary>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../sections/Module1.html">Module 1 — Foundations of Calculus</a></li>
+            <li><a href="../sections/Module2.html">Module 2 — Functions in Business and Economics</a></li>
+            <li><a href="../sections/Module3.html">Module 3 — Limits And Continuous Functions</a></li>
+            <li><a href="../sections/Module4.html">Module 4 — Differentiation</a></li>
+            <li><a href="../sections/outcome.html">Learning Outcome</a></li>
+            <li><a href="../sections/download.html">Download PDF</a></li>
+          </ul>
+        </details>
+        
+        <h3>On this page</h3>
 
-      <details class="toc-sec">
-        <summary><a href="#Indeterminate">3.3 Indeterminate</a></summary>
-        <ul class="sublist">
-          <li><a href="#module3-indeterminate-1">Indeterminate — 1</a></li>
-          <li><a href="#module3-indeterminate-2">Indeterminate — 2</a></li>
-          <li><a href="#module3-indeterminate-3">Indeterminate — 3</a></li>
-          <li><a href="#module3-indeterminate-4">Indeterminate — 4</a></li>
-          <li><a href="#module3-indeterminate-5">Indeterminate — 5</a></li>
-          <li><a href="#module3-indeterminate-6">Indeterminate — 6</a></li>
-          <li><a href="#module3-indeterminate-7">Indeterminate — 7</a></li>
-          <li><a href="#module3-indeterminate-8">Indeterminate — 8</a></li>
-          <li><a href="#module3-indeterminate-9">Indeterminate — 9</a></li>
-          <li><a href="#module3-indeterminate-10">Indeterminate — 10</a></li>
-          <li><a href="#module3-indeterminate-11">Indeterminate — 11</a></li>
-          <li><a href="#module3-indeterminate-12">Indeterminate — 12</a></li>
-        </ul>
-      </details>
+        <!-- 3.1 Core Concepts -->
+        <details class="toc-sec">
+          <summary><a href="#CoreConcepts">3.1 Core Concepts</a></summary>
+          <ul>
+            <li><a href="#theo-limit">Theorem — Limit</a></li>
+            <li><a href="#method-inf-limit">Method — Limit at Infinity</a></li>
+            <li><a href="#def-continuity">Definition — Continuity</a></li>
+            <li><a href="#theo-ivt">Theorem — IVT (Existence of zeros)</a></li>
+            <li><a href="#method-eval-limits">Method — Evaluating the Limits</a></li>
+          </ul>
+        </details>
 
-      <details class="toc-sec">
-        <summary><a href="#Challenging">3.4 Challenging</a></summary>
-        <ul class="sublist">
-          <li><a href="#module3-challenging-1">Challenging — 1</a></li>
-          <li><a href="#module3-challenging-2">Challenging — 2</a></li>
-          <li><a href="#module3-challenging-3">Challenging — 3</a></li>
-          <li><a href="#module3-challenging-4">Challenging — 4</a></li>
-          <li><a href="#module3-challenging-5">Challenging — 5</a></li>
-          <li><a href="#module3-challenging-6">Challenging — 6</a></li>
-          <li><a href="#module3-challenging-7">Challenging — 7</a></li>
-        </ul>
-      </details>
-    </div>
-  </aside>
+        <!-- 3.2 Easy -->
+        <details class="toc-sec">
+          <summary><a href="#Easy">3.2 Easy</a></summary>
+          <ul class="sublist">
+            <li><a href="#module3-easy-1">Easy — 1</a></li>
+            <li><a href="#module3-easy-2">Easy — 2</a></li>
+            <li><a href="#module3-easy-3">Easy — 3</a></li>
+            <li><a href="#module3-easy-4">Easy — 4</a></li>
+            <li><a href="#module3-easy-5">Easy — 5</a></li>
+            <li><a href="#module3-easy-6">Easy — 6</a></li>
+            <li><a href="#module3-easy-7">Easy — 7</a></li>
+            <li><a href="#module3-easy-8">Easy — 8</a></li>
+            <li><a href="#module3-easy-9">Easy — 9</a></li>
+            <li><a href="#module3-easy-10">Easy — 10</a></li>
+          </ul>
+        </details>
 
+        <!-- 3.3 intermediate -->
+        <details class="toc-sec">
+          <summary><a href="#intermediate">3.3 intermediate</a></summary>
+          <ul class="sublist">
+            <li><a href="#module3-intermediate-1">intermediate — 1</a></li>
+            <li><a href="#module3-intermediate-2">intermediate — 2</a></li>
+            <li><a href="#module3-intermediate-3">intermediate — 3</a></li>
+            <li><a href="#module3-intermediate-4">intermediate — 4</a></li>
+            <li><a href="#module3-intermediate-5">intermediate — 5</a></li>
+            <li><a href="#module3-intermediate-6">intermediate — 6</a></li>
+            <li><a href="#module3-intermediate-7">intermediate — 7</a></li>
+            <li><a href="#module3-intermediate-8">intermediate — 8</a></li>
+            <li><a href="#module3-intermediate-9">intermediate — 9</a></li>
+            <li><a href="#module3-intermediate-10">intermediate — 10</a></li>
+            <li><a href="#module3-intermediate-11">intermediate — 11</a></li>
+            <li><a href="#module3-intermediate-12">intermediate — 12</a></li>
+          </ul>
+        </details>
+
+        <!-- 3.4 Challenging -->
+        <details class="toc-sec">
+          <summary><a href="#Challenging">3.4 Challenging</a></summary>
+          <ul class="sublist">
+            <li><a href="#module3-challenging-1">Challenging — 1</a></li>
+            <li><a href="#module3-challenging-2">Challenging — 2</a></li>
+            <li><a href="#module3-challenging-3">Challenging — 3</a></li>
+            <li><a href="#module3-challenging-4">Challenging — 4</a></li>
+            <li><a href="#module3-challenging-5">Challenging — 5</a></li>
+            <li><a href="#module3-challenging-6">Challenging — 6</a></li>
+            <li><a href="#module3-challenging-7">Challenging — 7</a></li>
+          </ul>
+        </details>
+
+      </div>
+    </aside>
   <main class="main">
     <div class="content">
       <nav class="topnav">
@@ -476,15 +498,15 @@
 
 
 <!-- =============================== -->
-<!-- 3.3 Indeterminate               -->
+<!-- 3.3 intermediate               -->
 <!-- =============================== -->
-<section id="Indeterminate">
-  <h2>Indeterminate <span class="badge">★★</span></h2>
+<section id="intermediate">
+  <h2>intermediate <span class="badge">★★</span></h2>
   <ol class="q-list">
 
-    <!-- Indeterminate-1 -->
-    <li id="module3-indeterminate-1">
-      <a class="q-label" href="#module3-indeterminate-1">Module 3 — Indeterminate — 1</a><br>
+    <!-- intermediate-1 -->
+    <li id="module3-intermediate-1">
+      <a class="q-label" href="#module3-intermediate-1">Module 3 — intermediate — 1</a><br>
       Find two functions \(f(x)\) and \(g(x)\) that satisfy \(\lim\limits_{x\to 5}f(x)=\lim\limits_{x\to 5}g(x)=0\) and \(\displaystyle \lim\limits_{x\to 5}\frac{f(x)}{g(x)}=3\).
       <details class="answer"><summary>Answer</summary>
         <p>One choice: \(f(x)=3(x-5)\), \(g(x)=(x-5)\).</p>
@@ -504,9 +526,9 @@
       </details>
     </li>
 
-    <!-- Indeterminate-2 -->
-    <li id="module3-indeterminate-2">
-      <a class="q-label" href="#module3-indeterminate-2">Module 3 — Indeterminate — 2</a><br>
+    <!-- intermediate-2 -->
+    <li id="module3-intermediate-2">
+      <a class="q-label" href="#module3-intermediate-2">Module 3 — intermediate — 2</a><br>
       Find two functions \(f(x)\) and \(g(x)\) that satisfy \(\lim\limits_{x\to 5}f(x)=\lim\limits_{x\to 5}g(x)=0\) and \(\displaystyle \lim\limits_{x\to 5}\frac{f(x)}{g(x)}=0\).
       <details class="answer"><summary>Answer</summary>
         <p>One choice: \(f(x)=3(x-5)^2\), \(g(x)=x-5\).</p>
@@ -523,9 +545,9 @@
       </details>
     </li>
 
-   <!-- Indeterminate-3 -->
-<li id="module3-indeterminate-3">
-  <a class="q-label" href="#module3-indeterminate-3">Module 3 — Indeterminate — 3</a><br>
+   <!-- intermediate-3 -->
+<li id="module3-intermediate-3">
+  <a class="q-label" href="#module3-intermediate-3">Module 3 — intermediate — 3</a><br>
   \(\displaystyle \lim\limits_{h\to 0} \frac{(2+h)^2-4}{2h}\)
   <details class="answer"><summary>Answer</summary>
     <p>\(2\).</p>
@@ -561,16 +583,16 @@
 </li>
 
 
-    <!-- Indeterminate-4 -->
-    <li id="module3-indeterminate-4">
-      <a class="q-label" href="#module3-indeterminate-4">Module 3 — Indeterminate — 4</a><br>
+    <!-- intermediate-4 -->
+    <li id="module3-intermediate-4">
+      <a class="q-label" href="#module3-intermediate-4">Module 3 — intermediate — 4</a><br>
       \(\displaystyle \lim\limits_{x\to -1} \frac{\sqrt{x^2+8}-3}{x+1}\)
       <details class="answer"><summary>Answer</summary>
         <p>\(-\dfrac{1}{3}\).</p>
       </details>
       <details class="solution"><summary>Full Solution</summary>
         <p>
-          Direct substitution gives \(\dfrac{0}{0}\), an indeterminate form. Multiply by the conjugate:
+          Direct substitution gives \(\dfrac{0}{0}\), an intermediate form. Multiply by the conjugate:
           \[
             \frac{\sqrt{x^2+8}-3}{x+1}\cdot
             \frac{\sqrt{x^2+8}+3}{\sqrt{x^2+8}+3}
@@ -596,9 +618,9 @@
       </details>
     </li>
 
-    <!-- Indeterminate-5 -->
-    <li id="module3-indeterminate-5">
-      <a class="q-label" href="#module3-indeterminate-5">Module 3 — Indeterminate — 5</a><br>
+    <!-- intermediate-5 -->
+    <li id="module3-intermediate-5">
+      <a class="q-label" href="#module3-intermediate-5">Module 3 — intermediate — 5</a><br>
       \(\displaystyle \lim\limits_{t\to 1} \frac{3t-3}{2-\sqrt{5-t}}\)
       <details class="answer"><summary>Answer</summary>
         <p>\(12\).</p>
@@ -624,9 +646,9 @@
       </details>
     </li>
 
-    <!-- Indeterminate-6 -->
-<li id="module3-indeterminate-6">
-  <a class="q-label" href="#module3-indeterminate-6">Module 3 — Indeterminate — 6</a><br>
+    <!-- intermediate-6 -->
+<li id="module3-intermediate-6">
+  <a class="q-label" href="#module3-intermediate-6">Module 3 — intermediate — 6</a><br>
   \(\displaystyle \lim\limits_{t\to \frac{1}{2}} \frac{\frac{1}{3t^2}+\frac{1}{t^2-1}}{2t-1}\)
   <details class="answer"><summary>Answer</summary>
     <p>\(-\dfrac{32}{9}\).</p>
@@ -678,9 +700,9 @@
 </li>
 
 
-   <!-- Indeterminate-7 -->
-<li id="module3-indeterminate-7">
-  <a class="q-label" href="#module3-indeterminate-7">Module 3 — Indeterminate — 7</a><br>
+   <!-- intermediate-7 -->
+<li id="module3-intermediate-7">
+  <a class="q-label" href="#module3-intermediate-7">Module 3 — intermediate — 7</a><br>
   Find all values of \(c\) such that the following function is continuous at \(x=c\)
   \[
     f(x)= \begin{cases}
@@ -759,9 +781,9 @@
 </li>
 
 
-<!-- Indeterminate-8 -->
-<li id="module3-indeterminate-8">
-  <a class="q-label" href="#module3-indeterminate-8">Module 3 — Indeterminate — 8</a><br>
+<!-- intermediate-8 -->
+<li id="module3-intermediate-8">
+  <a class="q-label" href="#module3-intermediate-8">Module 3 — intermediate — 8</a><br>
   Show that equation \(x^3 = 20 + \sqrt{x}\) has a solution.
   <details class="answer"><summary>Answer</summary>
     <p>There is at least one solution in \((2,3)\) by the Intermediate Value Theorem.</p>
@@ -805,9 +827,9 @@
 
 
 
-   <!-- Indeterminate-9 -->
-<li id="module3-indeterminate-9">
-  <a class="q-label" href="#module3-indeterminate-9">Module 3 — Indeterminate — 9</a><br>
+   <!-- intermediate-9 -->
+<li id="module3-intermediate-9">
+  <a class="q-label" href="#module3-intermediate-9">Module 3 — intermediate — 9</a><br>
   Show that equation \(x^2 - 4x^3 + 1 = x - 7\) has a solution.
   <details class="answer"><summary>Answer</summary>
     <p>There is at least one solution in \((1,2)\) by the Intermediate Value Theorem.</p>
@@ -851,9 +873,9 @@
 </li>
 
 
-    <!-- Indeterminate-10 -->
-    <li id="module3-indeterminate-10">
-      <a class="q-label" href="#module3-indeterminate-10">Module 3 — Indeterminate — 10</a><br>
+    <!-- intermediate-10 -->
+    <li id="module3-intermediate-10">
+      <a class="q-label" href="#module3-intermediate-10">Module 3 — intermediate — 10</a><br>
       Suppose the demand function for a certain product is given by \(D(p) = 1000 - 50p\), where \(D\) is the quantity demanded and \(p\) is the price per unit. The price per unit, \(p\), cannot be less than zero.
       <ol type="a">
         <li>Find the limit of the demand function as the price per unit (p) approaches zero.</li>
@@ -873,9 +895,9 @@
       </details>
     </li>
 
-    <!-- Indeterminate-11 -->
-    <li id="module3-indeterminate-11">
-      <a class="q-label" href="#module3-indeterminate-11">Module 3 — Indeterminate — 11</a><br>
+    <!-- intermediate-11 -->
+    <li id="module3-intermediate-11">
+      <a class="q-label" href="#module3-intermediate-11">Module 3 — intermediate — 11</a><br>
       A classmate from your Math 154 course attempted this problem. Identify if they’ve solved it correctly. If you find any errors, point out the step where the mistake occurred and provide the correct solution.
       <p><strong>Problem:</strong> Determine if there exists a root of the equation \(f(x) = \dfrac{1}{x-2}\) in the interval \([1,3]\) using the Intermediate Value Theorem.</p>
       <p><strong>Student's Solution:</strong><br/>
@@ -898,9 +920,9 @@
       </details>
     </li>
 
-<!-- Indeterminate-12 -->
-<li id="module3-indeterminate-12">
-  <a class="q-label" href="#module3-indeterminate-12">Module 3 — Indeterminate — 12</a><br>
+<!-- intermediate-12 -->
+<li id="module3-intermediate-12">
+  <a class="q-label" href="#module3-intermediate-12">Module 3 — intermediate — 12</a><br>
 
   Consider the graphs of the two functions \(f\) and \(g\) shown below.
 

@@ -75,7 +75,12 @@ main.content{
 
 /* ---------- TOC ---------- */
 .toc h3{ margin:.25rem 0 .5rem; }
-.toc ul{ list-style:none; padding-left:0; margin:.25rem 0; }
+.toc ul {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin:.25rem 0;
+}
+
 .toc li{ margin:.35rem 0; }
 .toc a{ text-decoration:none; color:var(--fg); }
 .toc a:hover{ color:var(--accent); }
@@ -237,6 +242,15 @@ pre{
   content: "▾";
 }
 
+/* Bullets for the "On this page" list */
+.toc > ul {
+  list-style: disc;        /* turn bullets back on */
+  padding-left: 1.25rem;   /* indent so bullets are visible */
+  margin: .25rem 0;
+}
 
+.toc > ul li {
+  margin: .35rem 0;
+}
 
 

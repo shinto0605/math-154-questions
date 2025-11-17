@@ -1,0 +1,2481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Module 3 — Limits & Continuity</title>
+<link rel="stylesheet" href="../assets/style.css"/>
+<script>
+  window.MathJax={
+    tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']]},
+    options:{skipHtmlTags:['script','noscript','style','textarea','pre','code']}
+  };
+</script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+<script src="../assets/site.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+    <h1 class="title">Module 4 — Differentiation</h1>
+    <p class="subtitle"><a href="../index.html" class="muted">⟵ Home</a></p>
+  </header>
+
+  <!-- LAYOUT WRAPPER -->
+  <div class="wrap">
+
+    <!-- SIDEBAR -->
+    <aside id="sidebar" class="sidebar">
+      <div class="toc">
+        <h3>Contents</h3>
+
+        <details class="toc-sec" >
+          <summary>Show / Hide</summary>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="../sections/Module1.html">Module 1 — Foundations of Calculus</a></li>
+            <li><a href="../sections/Module2.html">Module 2 — Functions in Business and Economics</a></li>
+            <li><a href="../sections/Module3.html">Module 3 — Limits And Continuous Functions</a></li>
+            <li><a href="../sections/Module4.html">Module 4 — Differentiation</a></li>
+            <li><a href="../sections/outcome.html">Learning Outcome</a></li>
+            <li><a href="../sections/download.html">Download PDF</a></li>
+          </ul>
+        </details>
+        <h3>On this page</h3>
+
+        <!-- 4.1 Core Concepts -->
+        <details class="toc-sec">
+          <summary><a href="#CoreConcepts">4.1 Core Concepts</a></summary>
+          <ul>
+            <li><a href="#def-derivative">Definition — Derivative</a></li>
+            <li><a href="#theo-diff-rules">Theorem — Differentiation Rules</a></li>
+            <li><a href="#theo-chain-rule">Theorem — Chain Rule</a></li>
+            <li><a href="#prop-derivative-rules">Properties — Derivative Rules</a></li>
+            <li><a href="#theo-higher-order">Theorem — Higher-order Derivatives</a></li>
+            <li><a href="#method-implicit">Method — Implicit Differentiation</a></li>
+            <li><a href="#method-logdiff">Method — Logarithmic Differentiation</a></li>
+            <li><a href="#method-tangent">Method — Steps to Find a Tangent Line</a></li>
+          </ul>
+        </details>
+
+        <!-- 4.2 Easy -->
+        <details class="toc-sec">
+          <summary><a href="#Easy">4.2 Easy</a></summary>
+          <ul class="sublist">
+            <li><a href="#module4-easy-1">Easy — 1</a></li>
+            <li><a href="#module4-easy-2">Easy — 2</a></li>
+            <li><a href="#module4-easy-3">Easy — 3</a></li>
+            <li><a href="#module4-easy-4">Easy — 4</a></li>
+          </ul>
+        </details>
+
+        <!-- 4.3 Intermediate -->
+        <details class="toc-sec">
+          <summary><a href="#Intermediate">4.3 Intermediate</a></summary>
+          <ul class="sublist">
+            <li><a href="#module4-int-1">Intermediate — 1</a></li>
+            <li><a href="#module4-int-2">Intermediate — 2</a></li>
+            <li><a href="#module4-int-3">Intermediate — 3</a></li>
+            <li><a href="#module4-int-4">Intermediate — 4</a></li>
+            <li><a href="#module4-int-5">Intermediate — 5</a></li>
+            <li><a href="#module4-int-6">Intermediate — 6</a></li>
+            <li><a href="#module4-int-7">Intermediate — 7</a></li>
+            <li><a href="#module4-int-8">Intermediate — 8</a></li>
+            <li><a href="#module4-int-9">Intermediate — 9</a></li>
+            <li><a href="#module4-int-10">Intermediate — 10</a></li>
+            <li><a href="#module4-int-11">Intermediate — 11</a></li>
+            <li><a href="#module4-int-12">Intermediate — 12</a></li>
+            <li><a href="#module4-int-13">Intermediate — 13</a></li>
+          </ul>
+        </details>
+
+        <!-- 4.4 Challenging -->
+        <details class="toc-sec">
+          <summary><a href="#Challenging">4.4 Challenging</a></summary>
+          <ul class="sublist">
+            <li><a href="#module4-ch-1">Challenging — 1</a></li>
+            <li><a href="#module4-ch-2">Challenging — 2</a></li>
+            <li><a href="#module4-ch-3">Challenging — 3</a></li>
+            <li><a href="#module4-ch-4">Challenging — 4</a></li>
+            <li><a href="#module4-ch-5">Challenging — 5</a></li>
+            <li><a href="#module4-ch-6">Challenging — 6</a></li>
+            <li><a href="#module4-ch-7">Challenging — 7</a></li>
+            <li><a href="#module4-ch-8">Challenging — 8</a></li>
+            <li><a href="#module4-ch-9">Challenging — 9</a></li>
+          </ul>
+        </details>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main">
+      <div class="content">
+        <nav class="topnav">
+          <a class="pill" href="../sections/Module3.html"> ⟵ Module 3</a>
+          <a class="pill" href="../sections/Module5.html"> Next: Module 5 ⟶</a> 
+        </nav>
+
+        <p>
+          You may click 
+          <a href="../PDF/Module 4.pdf" target="_blank" rel="noopener">
+            <strong>here</strong>
+          </a>
+          to download the PDF version.
+        </p>
+
+        <!-- =============================== -->
+        <!-- 4.1 Core Concepts               -->
+        <!-- =============================== -->
+        <section id="CoreConcepts">
+          <h2>4.1 Core Concepts</h2>
+
+          <!-- Definition: Derivative -->
+          <div class="callout definition" id="def-derivative">
+            <div class="block-title">Definition — Derivative</div>
+            <p>
+              The <strong>derivative of</strong> \(f(x)\) at \(x=a\), denoted \(f'(a)\), is defined by
+            </p>
+            <p>
+              \[
+                f'(a) = \lim_{h\to 0} \frac{f(a+h)-f(a)}{h}
+                = \lim_{x\to a} \frac{f(x)-f(a)}{x-a},
+              \]
+              if the limit exists.
+            </p>
+            <p>
+              When the above limit exists, the function \(f(x)\) is said to be
+              <strong>differentiable</strong> at \(x=a\).  
+              When the limit does <strong>not</strong> exist, we say \(f(x)\) is
+              <strong>not differentiable</strong> at \(x=a\).
+            </p>
+          </div>
+
+          <!-- Theorem: Differentiation Rules -->
+          <div class="callout theorem" id="theo-diff-rules">
+            <div class="block-title">Theorem — Differentiation Rules</div>
+            <p>
+              Let \(f(x)\) and \(g(x)\) be differentiable functions and let \(c\in\mathbb{R}\). Then:
+            </p>
+            <p>
+              \[
+                \frac{d}{dx}[c f(x)] = c f'(x), \qquad
+                \frac{d}{dx}[f(x)\pm g(x)] = f'(x)\pm g'(x),
+              \]
+              <p>
+                <strong>Product Rule:</strong>
+                \[
+                  \frac{d}{dx}[f(x)g(x)] = f'(x)g(x)+f(x)g'(x),
+                \]
+              </p>
+              <p>
+                <strong>Quotient Rule:</strong>
+                \[
+                  \frac{d}{dx}\left[\frac{f(x)}{g(x)}\right]
+                  = \frac{f'(x)g(x)-f(x)g'(x)}{(g(x))^2}.
+                \]
+              </p>
+              <p>
+                Note: the derivative of the quotient exists only at points where \(g(x)\neq 0\).
+              </p>
+          </div>
+
+          <!-- Theorem: Chain Rule -->
+          <div class="callout theorem" id="theo-chain-rule">
+            <div class="block-title">Theorem — Chain Rule</div>
+            <p>
+              Let \(f\) and \(g\) be differentiable functions. Then the composition
+              \(y=f(g(x))\) is differentiable, and
+            </p>
+            <p>
+              \[
+                \frac{d}{dx}[f(g(x))] = f'(g(x))\cdot g'(x).
+              \]
+            </p>
+          </div>
+
+          <!-- Proposition: Derivative Rules -->
+          <div class="callout theorem" id="prop-derivative-rules">
+            <div class="block-title">Proposition — Derivative Rules</div>
+            <p>The following are standard derivative formulas:</p>
+            <p>
+              \[
+              \begin{aligned}
+                &\frac{d}{dx}[c] = 0,\\
+                &\frac{d}{dx}[mx+b] = m,\\
+                &\frac{d}{dx}[x^n] = n x^{n-1},\\
+                &\frac{d}{dx}[\sin x] = \cos x,\\
+                &\frac{d}{dx}[\cos x] = -\sin x,\\
+                &\frac{d}{dx}[\tan x] = \frac{1}{\cos^2 x},\\
+                &\frac{d}{dx}[e^x] = e^x,\\
+                &\frac{d}{dx}[b^x] = b^x \ln b,\\
+                &\frac{d}{dx}[\ln x] = \frac{1}{x}.
+              \end{aligned}
+              \]
+            </p>
+          </div>
+
+          <!-- Theorem: Higher-order derivatives -->
+          <div class="callout theorem" id="theo-higher-order">
+            <div class="block-title">Theorem — Higher-order Derivatives</div>
+            <p>
+              The <strong>second derivative</strong> of \(f(x)\) is
+              \[
+                f''(x) = \frac{d^2}{dx^2}f(x)
+                = \lim_{h\to 0} \frac{f'(x+h)-f'(x)}{h}.
+              \]
+            </p>
+            <p>
+              The <strong>n-th derivative</strong> of \(f(x)\) is
+              \[
+                f^{(n)}(x) = \frac{d^n}{dx^n}f(x)
+                = \lim_{h\to 0} \frac{f^{(n-1)}(x+h)-f^{(n-1)}(x)}{h}.
+              \]
+            </p>
+          </div>
+
+          <!-- Method: Implicit Differentiation -->
+          <div class="callout example" id="method-implicit">
+            <div class="block-title">Method — Implicit Differentiation</div>
+            <p>
+              When \(y\) is given implicitly as a function of \(x\), differentiate both sides
+              of the equation with respect to \(x\) and then solve the resulting equation
+              for \(\dfrac{dy}{dx}\).
+            </p>
+          </div>
+
+          <!-- Method: Logarithmic Differentiation -->
+          <div class="callout example" id="method-logdiff">
+            <div class="block-title">Method — Logarithmic Differentiation</div>
+            <ol>
+              <li>Take the natural logarithm on both sides of the equation, and use log properties to rewrite any “complicated expression” as a sum of simpler terms.</li>
+              <li>Differentiate both sides with respect to \(x\).</li>
+              <li>Solve the resulting equation for \(\dfrac{dy}{dx}\).</li>
+            </ol>
+          </div>
+
+          <!-- Method: Steps to Find a Tangent Line -->
+          <div class="callout example" id="method-tangent">
+            <div class="block-title">Method — Steps to Find a Tangent Line</div>
+            <p>To find the tangent line at the point \((a,b)\):</p>
+            <ol>
+              <li>Find the first derivative \(f'(x)\).</li>
+              <li>Compute \(f'(a)\); this is the slope of the tangent line at \(x=a\).</li>
+              <li>
+                Plug \(a\), \(b\), and \(f'(a)\) into the point-slope form:
+                \[
+                  y-b = f'(a)(x-a).
+                \]
+              </li>
+              <li>Rearrange to slope–intercept form \(y=mx+b\) if desired.</li>
+            </ol>
+          </div>
+        </section>
+
+              <!-- =============================== -->
+      <!-- 4.2 Easy — Differentiation      -->
+      <!-- =============================== -->
+      <section id="Easy">
+        <h2>Easy <span class="badge">★</span></h2>
+
+        <ol class="q-list">
+
+          <!-- Easy-1 -->
+          <li id="module4-easy-1">
+            <a class="q-label" href="#module4-easy-1">Module 4 — Easy — 1</a><br>
+            Find the derivatives of the following functions.
+            <ol type="a">
+              <!-- (a) -->
+              <li>
+                \(f(x)=(x^3-1)(x+1)\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \(f'(x)=4x^3+3x^2-1.\)
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Use the product rule on \(f(x)=(x^3-1)(x+1)\).</p>
+                  <p>
+                    \[
+                    \begin{aligned}
+                      f'(x)
+                        &= (x^3-1)\,\frac{d}{dx}(x+1) + (x+1)\,\frac{d}{dx}(x^3-1)\\[4pt]
+                        &= (x^3-1)\cdot 1 + (x+1)\cdot 3x^2\\[4pt]
+                        &= (x^3-1) + 3x^2(x+1)\\[4pt]
+                        &= (x^3-1) + 3x^2x + 3x^2\\[4pt]
+                        &= x^3-1 + 3x^3+3x^2\\[4pt]
+                        &= 4x^3+3x^2-1.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (b) -->
+              <li>
+                \(\displaystyle f(x)=\frac{\sqrt{x}+1}{x^2+1}\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      f'(x)
+                      =\frac{\dfrac{1}{2\sqrt{x}}(x^2+1)-(\sqrt{x}+1)\cdot 2x}{(x^2+1)^2}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Write the function as a quotient and apply the quotient rule.</p>
+                  <p>
+                    \[
+                      f(x)=\frac{u(x)}{v(x)},\quad
+                      u(x)=\sqrt{x}+1,\quad
+                      v(x)=x^2+1.
+                    \]
+                  </p>
+                  <p>
+                    Then
+                    \[
+                      u'(x)=\frac{1}{2\sqrt{x}},\qquad
+                      v'(x)=2x.
+                    \]
+                  </p>
+                  <p>By the quotient rule,
+                    \[
+                    \begin{aligned}
+                      f'(x)
+                        &=\frac{u'(x)v(x)-u(x)v'(x)}{[v(x)]^2}\\[4pt]
+                        &=\frac{\dfrac{1}{2\sqrt{x}}(x^2+1)-(\sqrt{x}+1)\cdot 2x}{(x^2+1)^2}.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (c) -->
+              <li>
+                \(\displaystyle f(x)=(3x^2-1)\left(x^2-\frac{1}{x}\right).\)
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      f'(x)
+                      =6x\left(x^2-\frac{1}{x}\right)
+                      +(3x^2-1)\left(2x+\frac{1}{x^2}\right).
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Again use the product rule. Let
+                    \[
+                      u(x)=3x^2-1,\qquad
+                      v(x)=x^2-\frac{1}{x}.
+                    \]
+                  </p>
+                  <p>
+                    Then
+                    \[
+                      u'(x)=6x,\qquad
+                      v'(x)=2x+\frac{1}{x^2}.
+                    \]
+                  </p>
+                  <p>
+                    By the product rule,
+                    \[
+                    \begin{aligned}
+                      f'(x)
+                        &=u'(x)v(x)+u(x)v'(x)\\[4pt]
+                        &=6x\left(x^2-\frac{1}{x}\right)
+                          +(3x^2-1)\left(2x+\frac{1}{x^2}\right).
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (d) -->
+              <li>
+                \(f(x)=\ln(x^{154})\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      f'(x)=\frac{154}{x}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p><em>Method 1 (chain rule).</em></p>
+                  <p>
+                    \[
+                    \begin{aligned}
+                      f(x) &=\ln(x^{154}),\\[4pt]
+                      f'(x) &=\frac{1}{x^{154}}\cdot\frac{d}{dx}(x^{154})
+                             =\frac{1}{x^{154}}\cdot 154x^{153}\\[4pt]
+                           &=154\frac{x^{153}}{x^{154}}
+                             =\frac{154}{x}.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p><em>Method 2 (logarithm law).</em></p>
+                  <p>Using \(\ln(x^{154})=154\ln x\),
+                    \[
+                    \begin{aligned}
+                      f(x)&=154\ln x,\\[4pt]
+                      f'(x)&=154\cdot\frac{1}{x}
+                           =\frac{154}{x}.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (e) -->
+              <li>
+                \(f(t)=\ln(3t+1)\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      f'(t)=\frac{3}{3t+1}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Use the chain rule with \(\ln(\,\cdot\,)\).</p>
+                  <p>
+                    Let \(u(t)=3t+1\). Then \(f(t)=\ln u(t)\) and
+                    \[
+                      f'(t)=\frac{1}{u(t)}\cdot u'(t)
+                           =\frac{1}{3t+1}\cdot 3
+                           =\frac{3}{3t+1}.
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (f) -->
+              <li>
+                \(\displaystyle f(t)=\ln\bigl(\sqrt{t^2-1}\bigr).\)
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      f'(t)=\frac{t}{t^2-1}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>We differentiate using the chain rule.</p>
+                  <p>
+                    Write
+                    \[
+                      f(t)=\ln\bigl(\sqrt{t^2-1}\bigr).
+                    \]
+                    Let \(u(t)=\sqrt{t^2-1}\). Then \(f(t)=\ln (u(t))\), so
+                    \[
+                      f'(t)=\frac{1}{u(t)}\cdot u'(t)
+                           =\frac{u'(t)}{\sqrt{t^2-1}}.
+                    \]
+                  </p>
+                  <p>Next compute \(u'(t)\). Since \(u(t)=(t^2-1)^{1/2}\),
+                    \[
+                    \begin{aligned}
+                      u'(t)
+                        &=\frac{1}{2}(t^2-1)^{-1/2}\cdot\frac{d}{dt}(t^2-1)\\[4pt]
+                        &=\frac{1}{2}(t^2-1)^{-1/2}\cdot 2t\\[4pt]
+                        &=\frac{t}{\sqrt{t^2-1}}.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Substitute into \(f'(t)=\dfrac{u'(t)}{\sqrt{t^2-1}}\):
+                    \[
+                    \begin{aligned}
+                      f'(t)
+                        &=\frac{\dfrac{t}{\sqrt{t^2-1}}}{\sqrt{t^2-1}}
+                         =\frac{t}{(\sqrt{t^2-1})^2}
+                         =\frac{t}{t^2-1}.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+                <details class="video">
+      <summary>Video Solution</summary>
+      <p>
+      The video solution is available
+      <a href="https://drive.google.com/file/d/1DZl08jl4TuumoJ5a-0PnPTG2dfcLimqp/view?usp=drive_link"
+         target="_blank" rel="noopener">
+        here
+      </a>.
+    </p>
+  </details>
+              </li>
+            </ol>
+          </li>
+
+          <!-- Easy-2 -->
+          <li id="module4-easy-2">
+            <a class="q-label" href="#module4-easy-2">Module 4 — Easy — 2</a><br>
+            Find an equation of the tangent line to the given curve at the given point.
+            <ol type="a">
+              <!-- (a) -->
+              <li>
+                \(f(x)=\sqrt{2x-1}\) at \((5,3)\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    Tangent line: \(y=\dfrac{1}{3}x+\dfrac{4}{3}.\)
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>First compute the derivative of \(f(x)=\sqrt{2x-1}\).</p>
+                  <p>
+                    Rewrite \(f(x)=(2x-1)^{1/2}\). Then
+                    \[
+                    \begin{aligned}
+                      f'(x)
+                        &=\frac{1}{2}(2x-1)^{-1/2}\cdot\frac{d}{dx}(2x-1)\\[4pt]
+                        &=\frac{1}{2}(2x-1)^{-1/2}\cdot 2\\[4pt]
+                        &=\frac{1}{\sqrt{2x-1}}.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>At \(x=5\),
+                    \[
+                      f'(5)=\frac{1}{\sqrt{2\cdot 5-1}}
+                            =\frac{1}{\sqrt{9}}
+                            =\frac{1}{3}.
+                    \]
+                  </p>
+                  <p>The slope of the tangent line at \((5,3)\) is therefore \(m=f'(5)=\dfrac{1}{3}\). Using the point–slope form,
+                    \[
+                    \begin{aligned}
+                      y-3 &= \frac{1}{3}(x-5),\\[4pt]
+                      y &= 3+\frac{1}{3}(x-5)\\[4pt]
+                        &=\frac{1}{3}x+\frac{4}{3}.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (b) -->
+              <li>
+                \(f(x)=e^x\) at \((0,1)\).
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    Tangent line: \(y=x+1.\)
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>The derivative of \(f(x)=e^x\) is
+                    \[
+                      f'(x)=e^x.
+                    \]
+                  </p>
+                  <p>At \(x=0\),
+                    \[
+                      f'(0)=e^0=1.
+                    \]
+                    Hence the tangent line at \((0,1)\) has slope \(m=1\).
+                  </p>
+                  <p>Use the point–slope form at \((0,1)\):
+                    \[
+                    \begin{aligned}
+                      y-1 &= 1\cdot(x-0),\\[4pt]
+                      y &= x+1.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+            </ol>
+          </li>
+
+          <!-- Easy-3 -->
+          <li id="module4-easy-3">
+            <a class="q-label" href="#module4-easy-3">Module 4 — Easy — 3</a><br>
+            Find \(\dfrac{dy}{dx}\) for each of the following equations.
+            <ol type="a">
+              <!-- (a) -->
+              <li>
+                \(x^2y^3-xy=10.\)
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      \frac{dy}{dx}
+                      =\frac{-2xy^3+y}{3x^2y^2-x}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Differentiate implicitly with respect to \(x\).</p>
+                  <p>
+                    Start from
+                    \[
+                      x^2y^3-xy=10.
+                    \]
+                    Differentiate term by term:
+                    \[
+                    \begin{aligned}
+                      \frac{d}{dx}(x^2y^3)-\frac{d}{dx}(xy)
+                        &=\frac{d}{dx}(10).
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>For the first term, use the product rule:
+                    \[
+                    \begin{aligned}
+                      \frac{d}{dx}(x^2y^3)
+                        &=2x\cdot y^3 + x^2\cdot 3y^2\,\frac{dy}{dx}.
+                    \end{aligned}
+                    \]
+                    For the second term,
+                    \[
+                      \frac{d}{dx}(xy)=y+x\frac{dy}{dx}.
+                    \]
+                    The right-hand side derivative is \(0\).
+                  </p>
+                  <p>Putting these together,
+                    \[
+                    \begin{aligned}
+                      2xy^3+3x^2y^2\frac{dy}{dx} -\bigl(y+x\frac{dy}{dx}\bigr)
+                        &=0.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Group the terms involving \(\dfrac{dy}{dx}\):
+                    \[
+                    \begin{aligned}
+                      3x^2y^2\frac{dy}{dx}-x\frac{dy}{dx}
+                        &= -2xy^3 + y,\\[4pt]
+                      \left(3x^2y^2-x\right)\frac{dy}{dx}
+                        &= -2xy^3 + y.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Finally,
+                    \[
+                      \frac{dy}{dx}
+                      =\frac{-2xy^3+y}{3x^2y^2-x}.
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (b) -->
+              <li>
+                \(x^3y^5+3x=8y^3+1.\)
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      \frac{dy}{dx}
+                      =\frac{3x^2y^5+3}{24y^2-5x^3y^4}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Differentiate implicitly with respect to \(x\).</p>
+                  <p>
+                    \[
+                      x^3y^5+3x=8y^3+1.
+                    \]
+                  </p>
+                  <p>Differentiate each term:
+                    \[
+                    \begin{aligned}
+                      \frac{d}{dx}(x^3y^5)+\frac{d}{dx}(3x)
+                        &=\frac{d}{dx}(8y^3)+\frac{d}{dx}(1).
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>For \(x^3y^5\), use the product rule:
+                    \[
+                    \begin{aligned}
+                      \frac{d}{dx}(x^3y^5)
+                        &=3x^2y^5 + x^3\cdot 5y^4\frac{dy}{dx}.
+                    \end{aligned}
+                    \]
+                    Also,
+                    \[
+                      \frac{d}{dx}(3x)=3,\qquad
+                      \frac{d}{dx}(8y^3)=8\cdot 3y^2\frac{dy}{dx}=24y^2\frac{dy}{dx}.
+                    \]
+                  </p>
+                  <p>Thus
+                    \[
+                    \begin{aligned}
+                      3x^2y^5 + x^3\cdot 5y^4\frac{dy}{dx} + 3
+                        &= 24y^2\frac{dy}{dx}.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Collect the \(\dfrac{dy}{dx}\) terms on one side:
+                    \[
+                    \begin{aligned}
+                      x^3\cdot 5y^4\frac{dy}{dx} - 24y^2\frac{dy}{dx}
+                        &= -3x^2y^5 - 3,\\[4pt]
+                      \left(5x^3y^4 - 24y^2\right)\frac{dy}{dx}
+                        &= -3x^2y^5 -3.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Multiply numerator and denominator by \(-1\) for a cleaner form:
+                    \[
+                    \begin{aligned}
+                      \frac{dy}{dx}
+                        &= \frac{3x^2y^5+3}{24y^2-5x^3y^4}.
+                    \end{aligned}
+                    \]
+                  </p>
+                </details>
+              </li>
+
+              <!-- (c) -->
+              <li>
+                \(y=\sin x+\cos y.\)
+                <details class="answer"><summary>Answer</summary>
+                  <p>
+                    \[
+                      \frac{dy}{dx}
+                      =\frac{\cos x}{1+\sin y}.
+                    \]
+                  </p>
+                </details>
+                <details class="solution"><summary>Full Solution</summary>
+                  <p>Differentiate both sides with respect to \(x\).</p>
+                  <p>
+                    \[
+                      y=\sin x+\cos y.
+                    \]
+                  </p>
+                  <p>Taking derivatives,
+                    \[
+                    \begin{aligned}
+                      \frac{d}{dx}(y)
+                        &=\frac{d}{dx}(\sin x)+\frac{d}{dx}(\cos y).
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>
+                    \[
+                      \frac{d}{dx}(y)=\frac{dy}{dx},\qquad
+                      \frac{d}{dx}(\sin x)=\cos x.
+                    \]
+                    For \(\cos y\), use the chain rule:
+                    \[
+                      \frac{d}{dx}(\cos y)=-\sin y\cdot \frac{dy}{dx}.
+                    \]
+                  </p>
+                  <p>Thus,
+                    \[
+                    \begin{aligned}
+                      \frac{dy}{dx}
+                        &=\cos x -\sin y\,\frac{dy}{dx}.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Collect \(\dfrac{dy}{dx}\) terms:
+                    \[
+                    \begin{aligned}
+                      \frac{dy}{dx}+\sin y\,\frac{dy}{dx}
+                        &=\cos x,\\[4pt]
+                      (1+\sin y)\frac{dy}{dx}
+                        &=\cos x.
+                    \end{aligned}
+                    \]
+                  </p>
+                  <p>Therefore,
+                    \[
+                      \frac{dy}{dx}
+                      =\frac{\cos x}{1+\sin y}.
+                    \]
+                  </p>
+                </details>
+              </li>
+            </ol>
+          </li>
+
+          <!-- Easy-4 -->
+          <li id="module4-easy-4">
+            <a class="q-label" href="#module4-easy-4">Module 4 — Easy — 4</a><br>
+            Consider the function \(f(x)=3x^2+4x+30\). Compute the derivative of \(f(x)\) when \(x=1\) by first finding \(f'(x)\) using the differentiation rules and then evaluating it at \(x=1\).
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(f'(1)=10.\)
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>Differentiate the polynomial term by term.</p>
+              <p>
+                \[
+                \begin{aligned}
+                  f(x)&=3x^2+4x+30,\\[4pt]
+                  f'(x)&=6x+4+0=6x+4.
+                \end{aligned}
+                \]
+              </p>
+              <p>Now evaluate at \(x=1\):
+                \[
+                  f'(1)=6\cdot 1+4=6+4=10.
+                \]
+              </p>
+            </details>
+          </li>
+
+        </ol>
+      </section>
+
+
+            <!-- =============================== -->
+      <!-- 4.3 Intermediate                -->
+      <!-- =============================== -->
+      <section id="Intermediate">
+        <h2>Intermediate <span class="badge medium">★★</span></h2>
+
+        <ol class="q-list">
+          <!-- Int-1 -->
+          <li id="module4-int-1">
+            <a class="q-label" href="#module4-int-1">Module 4 — Intermediate — 1</a><br>
+            Consider the function \(f(x)=3x^2+4x+30\).  
+            Compute the derivative of \(f(x)\) using the (limit) definition of the derivative and evaluate it at \(x=1\).  
+            Hint: It may be easier to use
+            \[
+              f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
+            \]
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(f'(x)=6x+4\), so \(f'(1)=10\).
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>By the definition of the derivative given in the hint,</p>
+              <p>
+                \[
+                  f'(a)=\lim_{x\to a}\frac{f(x)-f(a)}{x-a}.
+                \]
+              </p>
+              <p>Here \(f(x)=3x^2+4x+30\), so \(f(a)=3a^2+4a+30\). Then</p>
+              <p>
+                \[
+                \begin{aligned}
+                  f'(a)
+                  &=\lim_{x\to a}\frac{3x^2+4x+30-(3a^2+4a+30)}{x-a}\\[4pt]
+                  &=\lim_{x\to a}\frac{3x^2-3a^2+4x-4a}{x-a}\\[4pt]
+                  &=\lim_{x\to a}\frac{3(x^2-a^2)+4(x-a)}{x-a}\\[4pt]
+                  &=\lim_{x\to a}\frac{3(x-a)(x+a)+4(x-a)}{x-a}\\[4pt]
+                  &=\lim_{x\to a}\bigl(3(x+a)+4\bigr)\\[4pt]
+                  &=3(a+a)+4\\[2pt]
+                  &=6a+4.
+                \end{aligned}
+                \]
+              </p>
+              <p>
+                Therefore, as a function of \(x\), \(f'(x)=6x+4\).  
+                At \(x=1\),
+                \[
+                  f'(1)=6(1)+4=10.
+                \]
+              </p>
+              <p>
+                Note: This agrees with the answer obtained in Easy (\(\star\)), Question 4.
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-2 -->
+<li id="module4-int-2">
+  <a class="q-label" href="#module4-int-2">Module 4 — Intermediate — 2</a><br>
+  Find the derivatives of the following functions:
+  <ol type="a">
+    <!-- (a) -->
+    <li>
+      \(f(x)=\sin(x^5+7x+3)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \(f'(x)=\cos(x^5+7x+3)\,(5x^4+7)\).
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Let \(u(x)=x^5+7x+3\). Then \(f(x)=\sin(u)\).
+          By the chain rule,
+        </p>
+        <p>
+          \[
+            f'(x)=\cos(u)\,u'(x).
+          \]
+        </p>
+        <p>
+          Since \(u'(x)=5x^4+7\), we obtain
+          \[
+            f'(x)=\cos(x^5+7x+3)\,(5x^4+7).
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- (b) -->
+    <li>
+      \(f(x)=\ln(x-9)\cos(e^x)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \(f'(x)=\displaystyle \frac{1}{x-9}\cos(e^x)-\ln(x-9)\,\sin(e^x)\,e^x.\)
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          The function is a product of \(\ln(x-9)\) and \(\cos(e^x)\).
+          Use the product rule:
+        </p>
+        <p>
+          \[
+            f'(x)=\bigl(\ln(x-9)\bigr)' \cos(e^x)
+            +\ln(x-9)\,\bigl(\cos(e^x)\bigr)'.
+          \]
+        </p>
+        <p>
+          Compute each derivative:
+          \[
+            \bigl(\ln(x-9)\bigr)'=\frac{1}{x-9},\qquad
+            \bigl(\cos(e^x)\bigr)'=-\sin(e^x)\,e^x
+          \]
+          (chain rule on \(\cos(e^x)\)).
+        </p>
+        <p>
+          Substituting,
+          \[
+            f'(x)=\frac{1}{x-9}\cos(e^x)-\ln(x-9)\,\sin(e^x)\,e^x.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- (c) -->
+    <li>
+      \(f(x)=\ln\left(\dfrac{\cos(3x+1)}{x^3-2}\right)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f'(x)= -3\tan(3x+1)-\frac{3x^2}{x^3-2}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          First simplify using logarithm laws:
+        </p>
+        <p>
+          \[
+            f(x)=\ln(\cos(3x+1))-\ln(x^3-2).
+          \]
+        </p>
+        <p>
+          Differentiate term by term. For the first term,
+          \[
+            \frac{d}{dx}\ln(\cos(3x+1))
+            =\frac{1}{\cos(3x+1)}\cdot\frac{d}{dx}\cos(3x+1)
+            =\frac{-\sin(3x+1)\cdot 3}{\cos(3x+1)}
+            =-3\tan(3x+1).
+          \]
+        </p>
+        <p>
+          For the second term,
+          \[
+            \frac{d}{dx}\bigl(-\ln(x^3-2)\bigr)
+            =-\frac{1}{x^3-2}\cdot 3x^2
+            =-\frac{3x^2}{x^3-2}.
+          \]
+        </p>
+        <p>
+          Therefore
+          \[
+            f'(x)=-3\tan(3x+1)-\frac{3x^2}{x^3-2}.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</li>
+
+
+         <!-- Int-3 -->
+<li id="module4-int-3">
+  <a class="q-label" href="#module4-int-3">Module 4 — Intermediate — 3</a><br>
+  Find an equation of the tangent line to the given curve at the given point.
+  <ol type="a">
+    <li>
+      \(f(x)=x\cos x\) at \((0,0)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>\(y=x\).</p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          We first compute \(f'(x)\) using the product rule:
+        </p>
+        <p>
+          \[
+            f'(x)=\frac{d}{dx}(x)\cos x+x\frac{d}{dx}(\cos x)
+            =1\cdot\cos x+x(-\sin x)
+            =\cos x-x\sin x.
+          \]
+        </p>
+        <p>
+          At \(x=0\),
+          \[
+            f'(0)=\cos 0-0\cdot\sin 0=1.
+          \]
+          Thus the slope of the tangent line at \((0,0)\) is \(1\).
+        </p>
+        <p>
+          Using point–slope form,
+          \[
+            y-0=1(x-0)\quad\Rightarrow\quad y=x.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(f(x)=\ln(3x^2-11)-5x\) at \((2,-10)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>\(y=7x-24\).</p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          First verify that the point lies on the curve:
+        </p>
+        <p>
+          \[
+            f(2)=\ln(3\cdot 2^2-11)-5\cdot 2
+            =\ln(12-11)-10
+            =\ln 1-10
+            =0-10=-10.
+          \]
+          So \((2,-10)\) is indeed on the graph.
+        </p>
+        <p>
+          Now differentiate \(f(x)\):
+          \[
+            f'(x)=\frac{1}{3x^2-11}\cdot 6x-5=\frac{6x}{3x^2-11}-5.
+          \]
+        </p>
+        <p>
+          At \(x=2\),
+          \[
+            f'(2)=\frac{6\cdot 2}{3\cdot 2^2-11}-5
+            =\frac{12}{12-11}-5
+            =12-5=7.
+          \]
+          Thus the slope of the tangent line at \((2,-10)\) is \(7\).
+        </p>
+        <p>
+          Using point–slope form,
+          \[
+            y+10=7(x-2).
+          \]
+          Rearranging,
+          \[
+            y=7x-24.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</li>
+             
+
+          <!-- Int-4 -->
+          <li id="module4-int-4">
+            <a class="q-label" href="#module4-int-4">Module 4 — Intermediate — 4</a><br>
+            Find an equation of the tangent line to the graph of
+            \(f(x)=\sqrt{x^2+3}\) at the point where \(x=1\).
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(y=\dfrac{x+3}{2}\).
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                First find the corresponding \(y\)-coordinate:
+                \[
+                  f(1)=\sqrt{1^2+3}=\sqrt{4}=2,
+                \]
+                so the point of tangency is \((1,2)\).
+              </p>
+              <p>
+                Next find the derivative:
+                \[
+                  f(x)=(x^2+3)^{1/2},\quad
+                  f'(x)=\frac{1}{2}(x^2+3)^{-1/2}\cdot 2x
+                  =\frac{x}{\sqrt{x^2+3}}.
+                \]
+              </p>
+              <p>
+                At \(x=1\),
+                \[
+                  f'(1)=\frac{1}{\sqrt{1^2+3}}=\frac{1}{2}.
+                \]
+              </p>
+              <p>
+                Using point–slope form at \((1,2)\),
+                \[
+                  y-2=\frac{1}{2}(x-1).
+                \]
+                Rearranging,
+                \[
+                  y=2+\frac{1}{2}(x-1)
+                  =2+\frac{x}{2}-\frac{1}{2}
+                  =\frac{x+3}{2}.
+                \]
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-5 -->
+          <li id="module4-int-5">
+            <a class="q-label" href="#module4-int-5">Module 4 — Intermediate — 5</a><br>
+            Is \(f(x)=|x-10|\) differentiable at \(x=10\)?  
+            If so, find its derivative at \(x=10\) using the definition of the derivative.  
+            If not, show that it is not differentiable at \(x=10\).
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(f(x)=|x-10|\) is <strong>not</strong> differentiable at \(x=10\).
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                We examine the derivative at \(x=10\) using the limit definition:
+                \[
+                  f'(10)=\lim_{h\to 0}\frac{f(10+h)-f(10)}{h}.
+                \]
+              </p>
+              <p>
+                Since \(f(x)=|x-10|\), we have \(f(10)=|0|=0\) and
+                \[
+                  f(10+h)=|10+h-10|=|h|.
+                \]
+                Thus
+                \[
+                  \frac{f(10+h)-f(10)}{h}=\frac{|h|}{h}.
+                \]
+              </p>
+              <p><strong>Right-hand limit (\(h\to 0^+\)):</strong></p>
+              <p>
+                For \(h>0\), \(|h|=h\), so
+                \[
+                  \lim_{h\to 0^+}\frac{|h|}{h}=\lim_{h\to 0^+}\frac{h}{h}=1.
+                \]
+              </p>
+              <p><strong>Left-hand limit (\(h\to 0^-\)):</strong></p>
+              <p>
+                For \(h<0\), \(|h|=-h\), so
+                \[
+                  \lim_{h\to 0^-}\frac{|h|}{h}
+                  =\lim_{h\to 0^-}\frac{-h}{h}
+                  =-1.
+                \]
+              </p>
+              <p>
+                Since
+                \[
+                  \lim_{h\to 0^+}\frac{|h|}{h}=1\neq -1=\lim_{h\to 0^-}\frac{|h|}{h},
+                \]
+                the two one-sided limits are not equal. Therefore the limit
+                \(\displaystyle \lim_{h\to 0}\frac{f(10+h)-f(10)}{h}\) does not exist, and \(f\) is not differentiable at \(x=10\).
+              </p>
+            </details>
+          </li>
+
+         <!-- Int-6 -->
+<li id="module4-int-6">
+  <a class="q-label" href="#module4-int-6">Module 4 — Intermediate — 6</a><br>
+  Find \(f^{(n)}(x)\) for the given \(f(x)\) and \(n\):
+  <ol type="a">
+    <li>
+      \(f(x)=4x^2-2x+1\) for \(n=2\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>\(f''(x)=8.\)</p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          First derivative:
+          \[
+            f'(x)=\frac{d}{dx}(4x^2-2x+1)=8x-2.
+          \]
+        </p>
+        <p>
+          Second derivative:
+          \[
+            f''(x)=\frac{d}{dx}(8x-2)=8.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(f(x)=x^4-2x^3+6x^2-3x+10\) for \(n=2\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>\(f''(x)=12x^2-12x+12.\)</p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Compute the first derivative term by term:
+        </p>
+        <p>
+          \[
+            f'(x)=4x^3-6x^2+12x-3.
+          \]
+        </p>
+        <p>
+          Differentiate again:
+          \[
+            f''(x)=\frac{d}{dx}(4x^3-6x^2+12x-3)
+            =12x^2-12x+12.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(f(x)=\dfrac{x}{2x+1}\) for \(n=2\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>\(f''(x)=-\dfrac{4}{(2x+1)^3}.\)</p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Use the quotient rule. Let \(u=x\) and \(v=2x+1\). Then
+          \[
+            u'=1,\qquad v'=2.
+          \]
+        </p>
+        <p>
+          The first derivative is
+          \[
+            f'(x)=\frac{u'v-uv'}{v^2}
+            =\frac{(1)(2x+1)-x\cdot 2}{(2x+1)^2}
+            =\frac{2x+1-2x}{(2x+1)^2}
+            =\frac{1}{(2x+1)^2}.
+          \]
+        </p>
+        <p>
+          Now differentiate \(f'(x)=(2x+1)^{-2}\):
+          \[
+            f''(x)=\frac{d}{dx}\bigl((2x+1)^{-2}\bigr)
+            =-2(2x+1)^{-3}\cdot 2
+            =-\frac{4}{(2x+1)^3}.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</li>
+
+
+          <!-- Int-7 -->
+<li id="module4-int-7">
+  <a class="q-label" href="#module4-int-7">Module 4 — Intermediate — 7</a><br>
+  Find \(\dfrac{dy}{dx}\) for the following equations:
+  <ol type="a">
+    <li>
+      \(e^{2x+3y}=x^2-\ln(xy^3)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            \frac{dy}{dx}
+            =\frac{2x-\frac{1}{x}-2e^{2x+3y}}{3e^{2x+3y}+\frac{3}{y}}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Differentiate both sides with respect to \(x\).
+        </p>
+        <p>
+          Left-hand side:
+          \[
+            \frac{d}{dx}e^{2x+3y}
+            =e^{2x+3y}\cdot(2+3y').
+          \]
+        </p>
+        <p>
+          Right-hand side:
+          \[
+            \frac{d}{dx}\bigl(x^2-\ln(xy^3)\bigr)
+            =2x-\frac{d}{dx}\bigl(\ln(xy^3)\bigr).
+          \]
+        </p>
+        <p>
+          For \(\ln(xy^3)\),
+          \[
+            \frac{d}{dx}(xy^3)=y^3+3xy^2y',
+          \]
+          so
+          \[
+            \frac{d}{dx}\ln(xy^3)
+            =\frac{y^3+3xy^2y'}{xy^3}
+            =\frac{1}{x}+\frac{3y'}{y}.
+          \]
+        </p>
+        <p>
+          Hence the right-hand side derivative is
+          \[
+            2x-\left(\frac{1}{x}+\frac{3y'}{y}\right).
+          \]
+        </p>
+        <p>
+          Set derivatives equal:
+          \[
+            e^{2x+3y}(2+3y')=2x-\frac{1}{x}-\frac{3y'}{y}.
+          \]
+        </p>
+        <p>
+          Expand and collect terms in \(y'\):
+          \[
+            2e^{2x+3y}+3e^{2x+3y}y'
+            =2x-\frac{1}{x}-\frac{3y'}{y},
+          \]
+          \[
+            3e^{2x+3y}y'+\frac{3y'}{y}
+            =2x-\frac{1}{x}-2e^{2x+3y}.
+          \]
+        </p>
+        <p>
+          Factor \(y'\):
+          \[
+            y'\left(3e^{2x+3y}+\frac{3}{y}\right)
+            =2x-\frac{1}{x}-2e^{2x+3y}.
+          \]
+        </p>
+        <p>
+          Therefore
+          \[
+            \frac{dy}{dx}
+            =\frac{2x-\frac{1}{x}-2e^{2x+3y}}{3e^{2x+3y}+\frac{3}{y}}.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(x^2+y^2=25\) at \((3,-4)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            \frac{dy}{dx}\bigg|_{(3,-4)}=\frac{3}{4}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Differentiate implicitly:
+          \[
+            \frac{d}{dx}(x^2)+\frac{d}{dx}(y^2)=0
+            \quad\Rightarrow\quad
+            2x+2yy'=0.
+          \]
+        </p>
+        <p>
+          Solve for \(y'\):
+          \[
+            2yy'=-2x,\qquad
+            y'=-\frac{x}{y}.
+          \]
+        </p>
+        <p>
+          At \((x,y)=(3,-4)\),
+          \[
+            y'=-\frac{3}{-4}=\frac{3}{4}.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(x^2+3xy+y^2=-1\) at \((-1,1)\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            \frac{dy}{dx}\bigg|_{(-1,1)}=1.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Differentiate both sides with respect to \(x\):
+        </p>
+        <p>
+          \[
+            \frac{d}{dx}(x^2)+\frac{d}{dx}(3xy)+\frac{d}{dx}(y^2)=0.
+          \]
+        </p>
+        <p>
+          This gives
+          \[
+            2x+3(xy'+y)+2yy'=0.
+          \]
+          Expanding,
+          \[
+            2x+3xy'+3y+2yy'=0.
+          \]
+        </p>
+        <p>
+          Group the \(y'\)-terms:
+          \[
+            (3x+2y)y'=-2x-3y.
+          \]
+          Hence
+          \[
+            y'=\frac{-2x-3y}{3x+2y}.
+          \]
+        </p>
+        <p>
+          At \((x,y)=(-1,1)\),
+          \[
+            y'=\frac{-2(-1)-3\cdot 1}{3(-1)+2\cdot 1}
+            =\frac{2-3}{-3+2}
+            =\frac{-1}{-1}
+            =1.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</li>
+
+
+          <!-- Int-8 -->
+          <li id="module4-int-8">
+            <a class="q-label" href="#module4-int-8">Module 4 — Intermediate — 8</a><br>
+            Use logarithmic differentiation to find the derivative of
+            \[
+              y = x^{x+2}.
+            \]
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(\displaystyle \frac{dy}{dx}=\left(\ln x+\frac{x+2}{x}\right)x^{x+2}.\)
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                Take natural logarithms of both sides:
+                \[
+                  \ln y=\ln(x^{x+2})=(x+2)\ln x.
+                \]
+              </p>
+              <p>
+                Differentiate implicitly with respect to \(x\):
+                \[
+                  \frac{1}{y}y'=\frac{d}{dx}\bigl((x+2)\ln x\bigr)
+                  =\ln x+\frac{x+2}{x}.
+                \]
+              </p>
+              <p>
+                Multiply both sides by \(y\):
+                \[
+                  y'=\left(\ln x+\frac{x+2}{x}\right)y.
+                \]
+                Since \(y=x^{x+2}\),
+                \[
+                  y'=\left(\ln x+\frac{x+2}{x}\right)x^{x+2}.
+                \]
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-9 -->
+          <li id="module4-int-9">
+            <a class="q-label" href="#module4-int-9">Module 4 — Intermediate — 9</a><br>
+            Consider a manufacturing company whose average cost function (in dollars) for producing \(q\) units is
+            \[
+              \bar C(q) = q^2 - 8q + 40.
+            \]
+            Use this information to determine the marginal cost function.
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                Marginal cost: \(C'(q)=3q^2-16q+40.\)
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                The average cost is
+                \[
+                  \bar C(q)=\frac{C(q)}{q}.
+                \]
+                Hence the total cost is
+                \[
+                  C(q)=q\,\bar C(q)=q(q^2-8q+40)=q^3-8q^2+40q.
+                \]
+              </p>
+              <p>
+                The marginal cost is the derivative of the total cost:
+                \[
+                  C'(q)=\frac{d}{dq}(q^3-8q^2+40q)
+                  =3q^2-16q+40.
+                \]
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-10 -->
+          <li id="module4-int-10">
+            <a class="q-label" href="#module4-int-10">Module 4 — Intermediate — 10</a><br>
+            A small manufacturing company produces a widget. The cost (in dollars) to produce \(q\) units is
+            \[
+              C(q)=0.02q^3 - 0.8q^2 + 15q + 500.
+            \]
+            <ol type="a">
+              <li>Find the marginal cost function.</li>
+              <li>Estimate the cost of producing the \(101\)-st widget using the marginal cost function.</li>
+              <li>Estimate the cost of producing the \(101\)-st widget using a linear approximation.</li>
+            </ol>
+
+            <details class="answer"><summary>Answer</summary>
+              <p>(a) \(C'(q)=0.06q^2-1.6q+15.\)</p>
+              <p>(b) Approx. cost of the 101st widget \(\approx C'(100)=\$455.\)</p>
+              <p>(c) Using linear approximation, the estimated cost of the 101st widget is again \(\$455.\)</p>
+            </details>
+
+            <details class="solution"><summary>Full Solution</summary>
+              <p><strong>(a)</strong> The marginal cost is the derivative of the cost function.</p>
+              <p>
+                \[
+                  C'(q)=\frac{d}{dq}\bigl(0.02q^3-0.8q^2+15q+500\bigr)
+                  =0.06q^2-1.6q+15.
+                \]
+              </p>
+
+              <p><strong>(b)</strong> The marginal cost at \(q=100\) approximates the cost of producing the 101st widget:</p>
+              <p>
+                \[
+                \begin{aligned}
+                  C'(100)
+                  &=0.06(100)^2-1.6(100)+15\\
+                  &=0.06\cdot 10000-160+15\\
+                  &=600-160+15\\
+                  &=455.
+                \end{aligned}
+                \]
+              </p>
+              <p>
+                So the 101st widget costs approximately \(\$455\).
+              </p>
+
+              <p><strong>(c)</strong> Linear approximation.</p>
+              <p>
+                A linear approximation of \(C(q)\) at \(q=100\) is
+                \[
+                  L(q)=C(100)+C'(100)(q-100).
+                \]
+              </p>
+              <p>
+                First compute \(C(100)\):
+                \[
+                \begin{aligned}
+                  C(100)
+                  &=0.02(100)^3-0.8(100)^2+15(100)+500\\
+                  &=0.02\cdot 1\,000\,000-0.8\cdot 10\,000+1500+500\\
+                  &=20\,000-8\,000+1\,500+500\\
+                  &=14\,000.
+                \end{aligned}
+                \]
+              </p>
+              <p>
+                We already found \(C'(100)=455\), so
+                \[
+                  L(q)=14\,000+455(q-100).
+                \]
+              </p>
+              <p>
+                To estimate the total cost of producing 101 widgets, set \(q=101\):
+                \[
+                  C(101)\approx L(101)
+                  =14\,000+455(101-100)
+                  =14\,000+455
+                  =14\,455.
+                \]
+              </p>
+              <p>
+                The approximate cost of the 101st widget is then
+                \[
+                  C(101)-C(100)\approx 14\,455-14\,000=455,
+                \]
+                in agreement with the marginal cost estimate.
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-11 -->
+          <li id="module4-int-11">
+            <a class="q-label" href="#module4-int-11">Module 4 — Intermediate — 11</a><br>
+            A tailor is currently producing 80 suits per month and sells them for \$100 per suit.  
+            The monthly demand curve is given by \(q = 100 - 2\sqrt{p}\).  
+            Find the current price elasticity of demand \(E_D\), and decide whether the price should be raised or lowered to increase revenue.
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(\displaystyle E_D=\frac{1}{8}\) (inelastic).  
+                The tailor should <strong>increase</strong> the price to increase revenue.
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                The demand curve is \(q(p)=100-2\sqrt{p}\), where \(q\) is quantity and \(p\) is price.
+              </p>
+              <p>
+                First find the current point: he produces 80 suits and charges \$100 per suit.  
+                Check consistency with the demand curve:
+                \[
+                  q(100)=100-2\sqrt{100}=100-2\cdot 10=80,
+                \]
+                so the point \((p,q)=(100,80)\) lies on the demand curve.
+              </p>
+              <p>
+                Differentiate \(q(p)\) with respect to \(p\):
+                \[
+                  q(p)=100-2p^{1/2},\quad
+                  q'(p)=-2\cdot \frac{1}{2}p^{-1/2}=-\frac{1}{\sqrt{p}}.
+                \]
+              </p>
+              <p>
+                In many calculus texts, the price elasticity of demand is defined as
+                \[
+                  E_D(p)=-\frac{p}{q(p)}\,q'(p).
+                \]
+                Substituting \(q'(p)=-1/\sqrt{p}\),
+                \[
+                  E_D(p)
+                  =-\frac{p}{q(p)}\left(-\frac{1}{\sqrt{p}}\right)
+                  =\frac{p}{q(p)}\cdot \frac{1}{\sqrt{p}}
+                  =\frac{\sqrt{p}}{q(p)}.
+                \]
+              </p>
+              <p>
+                At \(p=100\), we have \(\sqrt{p}=10\) and \(q(100)=80\). Thus
+                \[
+                  E_D(100)=\frac{10}{80}=\frac{1}{8}.
+                \]
+              </p>
+              <p>
+                Since \(|E_D|=\frac{1}{8}&lt;1\), demand is <strong>inelastic</strong> at the current price.  
+                For inelastic demand, raising the price increases total revenue (because the percentage drop in quantity demanded is smaller than the percentage increase in price).  
+                Therefore, the tailor should <strong>increase</strong> the price to increase revenue.
+              </p>
+            </details>
+          </li>
+
+          <!-- Int-12 -->
+          <li id="module4-int-12">
+            <a class="q-label" href="#module4-int-12">Module 4 — Intermediate — 12</a><br>
+            Find the linear approximation of the function \(f(x)=\sqrt{x}\) at \(x=4\), and use it to estimate \(\sqrt{4.1}\).
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                Linear approximation at \(x=4\): \(L(x)=2+\dfrac{1}{4}(x-4)\).  
+                \(\sqrt{4.1}\approx L(4.1)=\dfrac{81}{40}=2.025.\)
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                The linear approximation of \(f(x)\) at \(x=a\) is
+                \[
+                  L(x)=f(a)+f'(a)(x-a).
+                \]
+                Here \(f(x)=\sqrt{x}\), and we take \(a=4\).
+              </p>
+              <p>
+                First compute \(f(a)\):
+                \[
+                  f(4)=\sqrt{4}=2.
+                \]
+              </p>
+              <p>
+                Next find \(f'(x)\). Write \(f(x)=x^{1/2}\). Then
+                \[
+                  f'(x)=\frac{1}{2}x^{-1/2}=\frac{1}{2\sqrt{x}}.
+                \]
+                Hence
+                \[
+                  f'(4)=\frac{1}{2\sqrt{4}}=\frac{1}{2\cdot 2}=\frac{1}{4}.
+                \]
+              </p>
+              <p>
+                Therefore the linear approximation at \(x=4\) is
+                \[
+                  L(x)=2+\frac{1}{4}(x-4).
+                \]
+              </p>
+              <p>
+                To approximate \(\sqrt{4.1}\), substitute \(x=4.1\):
+                \[
+                \begin{aligned}
+                  \sqrt{4.1}
+                  &\approx L(4.1)
+                  =2+\frac{1}{4}(4.1-4)\\[4pt]
+                  &=2+\frac{1}{4}\cdot 0.1
+                  =2+\frac{1}{4}\cdot \frac{1}{10}\\[4pt]
+                  &=2+\frac{1}{40}
+                  =\frac{80}{40}+\frac{1}{40}
+                  =\frac{81}{40}
+                  =2.025.
+                \end{aligned}
+                \]
+              </p>
+             
+            </details>
+            <details class="video">
+      <summary>Video Solution</summary>
+      <p>
+                A video solution is available
+                <a href="https://drive.google.com/file/d/1DU7dqHOAxT_2AG_5BuRrzRWOsnzt2Kdj/view?usp=sharing"
+                   target="_blank" rel="noopener">here</a>.
+              </p>
+  </details>
+          </li>
+
+          <!-- Int-13 -->
+          <li id="module4-int-13">
+            <a class="q-label" href="#module4-int-13">Module 4 — Intermediate — 13</a><br>
+            Consider the circle \(x^2+y^2=25\).  
+            At the point \((3,4)\), if \(dx=0.1\), find the corresponding change in \(y\), denoted \(dy\).
+            <details class="answer"><summary>Answer</summary>
+              <p>
+                \(\displaystyle dy=-\frac{3}{40}.\)
+              </p>
+            </details>
+            <details class="solution"><summary>Full Solution</summary>
+              <p>
+                Start from the equation of the circle:
+                \[
+                  x^2+y^2=25.
+                \]
+                Differentiate implicitly with respect to \(x\):
+                \[
+                  2x+2yy'=0.
+                \]
+              </p>
+              <p>
+                Solve for \(y'\):
+                \[
+                  2yy'=-2x,\quad
+                  y'=-\frac{x}{y}.
+                \]
+              </p>
+              <p>
+                The differential of \(y\) is
+                \[
+                  y'=\frac{dy}{dx} = -\frac{x}{y} \implies dy=-\frac{x}{y}\,dx.
+                \]
+                At \((x,y)=(3,4)\) and \(dx=0.1=\dfrac{1}{10}\),
+                \[
+                \begin{aligned}
+                  dy
+                  &= -\frac{x}{y}\,dx\\[4pt]
+                  &= -\frac{3}{4}\cdot \frac{1}{10}\\[4pt]
+                  &= -\frac{3}{40}.
+                \end{aligned}
+                \]
+              </p>
+            </details>
+          </li>
+        </ol>
+      </section>
+
+
+        <!-- =============================== -->
+<!-- 4.4 Challenging                 -->
+<!-- =============================== -->
+<section id="Challenging">
+  <h2>Challenging <span class="badge hard">★★★</span></h2>
+
+  <ol class="q-list">
+    <!-- Ch-1 -->
+<li id="module4-ch-1">
+  <a class="q-label" href="#module4-ch-1">Module 4 — Challenging — 1</a><br>
+  Find \(f^{(n)}(x)\) for the given \(f(x)\) and \(n\):
+  <ol type="a">
+    <li>
+      \(f(x)=\ln x\) for \(n=5\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f^{(5)}(x)=\frac{24}{x^5}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          For \(f(x)=\ln x\), the derivatives follow a pattern:
+        </p>
+        <p>
+          \[
+          \begin{aligned}
+            f'(x)&=\frac{1}{x},\\
+            f''(x)&=-\frac{1}{x^2},\\
+            f^{(3)}(x)&=\frac{2!}{x^3},\\
+            f^{(4)}(x)&=-\frac{3!}{x^4},\\
+            f^{(5)}(x)&=\frac{4!}{x^5}.
+          \end{aligned}
+          \]
+        </p>
+        <p>
+          More generally,
+          \[
+            f^{(n)}(x)=(-1)^{n-1}\frac{(n-1)!}{x^n}.
+          \]
+          For \(n=5\),
+          \[
+            f^{(5)}(x)=(-1)^4\frac{4!}{x^5}=\frac{24}{x^5}.
+          \]
+        </p>
+        <p>
+          <em>Note.</em> The symbol \(m!\) is called <em>factorial</em>.  
+          For a positive integer \(m\),
+          \[
+            m! = 1\cdot 2\cdot 3\cdots m,
+          \]
+          and by convention \(0! = 1\). For example, \(4! = 1\cdot 2\cdot 3\cdot 4 = 24\).
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(f(x)=\sin(x+10)\) for \(n=20\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f^{(20)}(x)=\sin(x+10).
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          The derivatives of \(\sin(x+10)\) repeat with period \(4\):
+        </p>
+        <p>
+          \[
+          \begin{aligned}
+            f(x) &= \sin(x+10),\\
+            f'(x) &= \cos(x+10),\\
+            f''(x) &= -\sin(x+10),\\
+            f^{(3)}(x) &= -\cos(x+10),\\
+            f^{(4)}(x) &= \sin(x+10),
+          \end{aligned}
+          \]
+        </p>
+        <p>
+          and then the cycle repeats every 4 derivatives.
+        </p>
+        <p>
+          Since \(20\div 4=5\) with remainder \(0\), the 20th derivative is the same as the 4th derivative:
+          \[
+            f^{(20)}(x)=f^{(4)}(x)=\sin(x+10).
+          \]
+        </p>
+      </details>
+    </li>
+
+    <li>
+      \(f(x)=e^{10x}\) for \(n=101\)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f^{(101)}(x)=10^{101}e^{10x}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Let \(f(x)=e^{10x}\). Using the chain rule,
+        </p>
+        <p>
+          \[
+          \begin{aligned}
+            f'(x)&=10e^{10x},\\
+            f''(x)&=10^2e^{10x},\\
+            f^{(3)}(x)&=10^3e^{10x}.
+          \end{aligned}
+          \]
+        </p>
+        <p>
+          Each differentiation introduces another factor of \(10\).  
+          By the pattern, the \(n\)-th derivative is
+          \[
+            f^{(n)}(x)=10^n e^{10x}.
+          \]
+        </p>
+        <p>
+          For \(n=101\),
+          \[
+            f^{(101)}(x)=10^{101}e^{10x}.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</li>
+
+    <!-- Ch-2 -->
+    <li id="module4-ch-2">
+      <a class="q-label" href="#module4-ch-2">Module 4 — Challenging — 2</a><br>
+      Use logarithmic differentiation to find the derivative of:
+      <ol type="a">
+        <li>
+          \(y=(x-1)^2(x+1)^3(x+3)^4\)
+
+          <details class="answer"><summary>Answer</summary>
+            <p>
+              \[
+                y'=(x-1)^2(x+1)^3(x+3)^4
+                \left(\frac{2}{x-1}+\frac{3}{x+1}+\frac{4}{x+3}\right).
+              \]
+            </p>
+          </details>
+
+          <details class="solution"><summary>Full Solution</summary>
+            <p>
+              Start with
+              \[
+                y=(x-1)^2(x+1)^3(x+3)^4.
+              \]
+              Take natural logs of both sides:
+              \[
+                \ln y=2\ln(x-1)+3\ln(x+1)+4\ln(x+3).
+              \]
+            </p>
+            <p>
+              Differentiate with respect to \(x\):
+              \[
+                \frac{1}{y}y'
+                =2\cdot\frac{1}{x-1}+3\cdot\frac{1}{x+1}
+                  +4\cdot\frac{1}{x+3}.
+              \]
+            </p>
+            <p>
+              Multiply both sides by \(y\):
+              \[
+                y'
+                =y\left(\frac{2}{x-1}+\frac{3}{x+1}+\frac{4}{x+3}\right).
+              \]
+            </p>
+            <p>
+              Substitute \(y=(x-1)^2(x+1)^3(x+3)^4\) back in:
+              \[
+                y'=(x-1)^2(x+1)^3(x+3)^4
+                  \left(\frac{2}{x-1}+\frac{3}{x+1}+\frac{4}{x+3}\right).
+              \]
+            </p>
+          </details>
+        </li>
+
+        <li>
+          \(
+            y=\dfrac{\sqrt{4+3x^2}}{\sqrt[3]{x^2+1}}
+          \)
+
+          <details class="answer"><summary>Answer</summary>
+            <p>
+              \[
+                y'
+                =\left(\frac{3x}{4+3x^2}-\frac{2x}{3(x^2+1)}\right)
+                  \frac{\sqrt{4+3x^2}}{\sqrt[3]{x^2+1}}.
+              \]
+            </p>
+          </details>
+
+          <details class="solution"><summary>Full Solution</summary>
+            <p>
+              Rewrite
+              \[
+                y=\frac{\sqrt{4+3x^2}}{\sqrt[3]{x^2+1}}
+                =(4+3x^2)^{1/2}(x^2+1)^{-1/3}.
+              \]
+            </p>
+            <p>
+              Take logs:
+              \[
+                \ln y=\frac{1}{2}\ln(4+3x^2)-\frac{1}{3}\ln(x^2+1).
+              \]
+            </p>
+            <p>
+              Differentiate:
+              \[
+                \frac{1}{y}y'
+                =\frac{1}{2}\cdot\frac{6x}{4+3x^2}
+                 -\frac{1}{3}\cdot\frac{2x}{x^2+1}
+                =\frac{3x}{4+3x^2}-\frac{2x}{3(x^2+1)}.
+              \]
+            </p>
+            <p>
+              Multiply by \(y\):
+              \[
+                y'
+                =\left(\frac{3x}{4+3x^2}-\frac{2x}{3(x^2+1)}\right)
+                  y.
+              \]
+            </p>
+            <p>
+              Substitute back \(y=\dfrac{\sqrt{4+3x^2}}{\sqrt[3]{x^2+1}}\):
+              \[
+                y'
+                =\left(\frac{3x}{4+3x^2}-\frac{2x}{3(x^2+1)}\right)
+                  \frac{\sqrt{4+3x^2}}{\sqrt[3]{x^2+1}}.
+              \]
+            </p>
+          </details>
+        </li>
+      </ol>
+    </li>
+
+    <!-- Ch-3 -->
+    <li id="module4-ch-3">
+      <a class="q-label" href="#module4-ch-3">Module 4 — Challenging — 3</a><br>
+      Find all values of \(x\) where the tangent to \(y=2x^3+9x^2+5\) has slope \(24\).
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \(x=1\) and \(x=-4\).
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          The slope of the tangent is given by the derivative \(y'\).
+        </p>
+        <p>
+          \[
+            y=2x^3+9x^2+5
+            \quad\Rightarrow\quad
+            y'=6x^2+18x.
+          \]
+        </p>
+        <p>
+          We want \(y'=24\):
+          \[
+            6x^2+18x=24.
+          \]
+          Subtract \(24\) and simplify:
+          \[
+          \begin{aligned}
+            6x^2+18x-24&=0\\
+            x^2+3x-4&=0.
+          \end{aligned}
+          \]
+        </p>
+        <p>
+          Factor:
+          \[
+            x^2+3x-4=(x+4)(x-1)=0,
+          \]
+          so
+          \[
+            x=-4\quad\text{or}\quad x=1.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- Ch-4 -->
+    <li id="module4-ch-4">
+      <a class="q-label" href="#module4-ch-4">Module 4 — Challenging — 4</a><br>
+      Find a formula for the \(k\)-th derivative of \(f(x)=x^\alpha\), where \(\alpha\notin\mathbb{N}\).
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f^{(k)}(x)
+            =\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-k+1)\,x^{\alpha-k}.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Start with \(f(x)=x^\alpha\). Then
+          \[
+            f'(x)=\alpha x^{\alpha-1}.
+          \]
+        </p>
+        <p>
+          Differentiate again:
+          \[
+            f''(x)=\alpha(\alpha-1)x^{\alpha-2}.
+          \]
+        </p>
+        <p>
+          One more derivative:
+          \[
+            f^{(3)}(x)=\alpha(\alpha-1)(\alpha-2)x^{\alpha-3}.
+          \]
+        </p>
+        <p>
+          We see the pattern: each differentiation multiplies by one more factor \((\alpha-m)\) and reduces the exponent of \(x\) by \(1\). After \(k\) derivatives,
+          \[
+            f^{(k)}(x)
+            =\alpha(\alpha-1)(\alpha-2)\cdots(\alpha-k+1)\,x^{\alpha-k}.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- Ch-5 -->
+    <li id="module4-ch-5">
+      <a class="q-label" href="#module4-ch-5">Module 4 — Challenging — 5</a><br>
+      Consider the demand \(q(p)=e^{-p}\), which decreases very quickly with price.  
+      Determine the price \(p\) at which the marginal revenue is equal to zero.  
+      (Hint: Revenue \(R(p)=p\cdot q(p)\).)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          The marginal revenue is zero at \(p=1\).
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Revenue as a function of price is
+          \[
+            R(p)=p\,q(p)=p\,e^{-p}.
+          \]
+        </p>
+        <p>
+          Marginal revenue is the derivative of revenue with respect to price:
+          \[
+            R'(p)=\frac{d}{dp}\bigl(p e^{-p}\bigr).
+          \]
+        </p>
+        <p>
+          Use the product rule:
+          \[
+            R'(p)=1\cdot e^{-p}+p\cdot(-e^{-p})
+                 =e^{-p}-pe^{-p}
+                 =e^{-p}(1-p).
+          \]
+        </p>
+        <p>
+          Set \(R'(p)=0\):
+          \[
+            e^{-p}(1-p)=0.
+          \]
+          Since \(e^{-p}\neq 0\) for all \(p\), we must have
+          \[
+            1-p=0\quad\Rightarrow\quad p=1.
+          \]
+        </p>
+        <p>
+          Therefore, the marginal revenue is zero when the price is \(p=1\).
+        </p>
+      </details>
+    </li>
+
+    <!-- Ch-6 -->
+    <li id="module4-ch-6">
+      <a class="q-label" href="#module4-ch-6">Module 4 — Challenging — 6</a><br>
+      Find the quadratic function \(f(x)=ax^2+bx+c\) that satisfies:
+      <ol type="a">
+        <li>\(f'(0)=-4\)</li>
+        <li>\(f'(2)=0\)</li>
+        <li>\(f(0)=8\)</li>
+      </ol>
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            f(x)=x^2-4x+8.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Let
+          \[
+            f(x)=ax^2+bx+c.
+          \]
+          Then
+          \[
+            f'(x)=2ax+b.
+          \]
+        </p>
+        <p>
+          Use the conditions:
+        </p>
+        <ul>
+          <li>
+            \(f'(0)=-4 \Rightarrow 2a\cdot 0+b=-4\Rightarrow b=-4.\)
+          </li>
+          <li>
+            \(f'(2)=0 \Rightarrow 2a\cdot 2 + b=0\Rightarrow 4a-4=0\Rightarrow a=1.\)
+          </li>
+          <li>
+            \(f(0)=8 \Rightarrow a\cdot 0^2 + b\cdot 0 + c=8\Rightarrow c=8.\)
+          </li>
+        </ul>
+        <p>
+          Therefore
+          \[
+            f(x)=1\cdot x^2-4x+8=x^2-4x+8.
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- Ch-7 -->
+    <li id="module4-ch-7">
+      <a class="q-label" href="#module4-ch-7">Module 4 — Challenging — 7</a><br>
+      Evaluate
+      \[
+        \lim_{x\to 1}\frac{\sin(x^{154})-\sin(1)}{x-1}.
+      \]
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            \displaystyle \lim_{x\to 1}\frac{\sin(x^{154})-\sin(1)}{x-1}
+            =154\cos(1).
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Recognize this as a derivative at \(x=1\).  
+          For \(f(x)=\sin(x^{154})\),
+          \[
+            f'(1)=\lim_{x\to 1}\frac{f(x)-f(1)}{x-1}
+            =\lim_{x\to 1}\frac{\sin(x^{154})-\sin(1)}{x-1}.
+          \]
+        </p>
+        <p>
+          First compute \(f'(x)\) using the chain rule:
+          \[
+            f'(x)=\cos(x^{154})\cdot 154x^{153}
+                 =154x^{153}\cos(x^{154}).
+          \]
+        </p>
+        <p>
+          Evaluate at \(x=1\):
+          \[
+            f'(1)=154(1)^{153}\cos(1^{154})
+                 =154\cos(1).
+          \]
+        </p>
+        <p>
+          Therefore
+          \[
+            \lim_{x\to 1}\frac{\sin(x^{154})-\sin(1)}{x-1}
+            =154\cos(1).
+          \]
+        </p>
+      </details>
+    </li>
+
+    <!-- Ch-8 -->
+    <li id="module4-ch-8">
+      <a class="q-label" href="#module4-ch-8">Module 4 — Challenging — 8</a><br>
+      Find the coordinates of a point, other than \((0,0)\), such that the curve
+      \[
+        x^3+y^3=6xy
+      \]
+      has a horizontal tangent line at that point.  
+      (Hint: horizontal tangent \(\iff y'=0\).)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            \left(\sqrt[3]{16},\ \dfrac{\bigl(\sqrt[3]{16}\bigr)^2}{2}\right).
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Start with
+          \[
+            x^3+y^3=6xy.
+          \]
+          Differentiate implicitly with respect to \(x\):
+          \[
+            3x^2+3y^2 y'=6y+6x y'.
+          \]
+        </p>
+        <p>
+          Group the \(y'\)-terms:
+          \[
+            3y^2 y'-6x y'=6y-3x^2,
+          \]
+          \[
+            y'(3y^2-6x)=6y-3x^2.
+          \]
+          So
+          \[
+            y'=\frac{6y-3x^2}{3y^2-6x}.
+          \]
+        </p>
+        <p>
+          A horizontal tangent means \(y'=0\), so the numerator must be zero:
+          \[
+            6y-3x^2=0\quad\Rightarrow\quad y=\frac{x^2}{2}.
+          \]
+        </p>
+        <p>
+          Substitute \(y=\dfrac{x^2}{2}\) into the original equation:
+          \[
+          \begin{aligned}
+            x^3+\left(\frac{x^2}{2}\right)^3 &=6x\left(\frac{x^2}{2}\right)\\
+            x^3+\frac{x^6}{8}&=3x^3\\
+            \frac{x^6}{8}&=2x^3.
+          \end{aligned}
+          \]
+        </p>
+        <p>
+          Multiply both sides by \(8\):
+          \[
+            x^6=16x^3\quad\Rightarrow\quad x^3(x^3-16)=0.
+          \]
+          Thus
+          \[
+            x^3=0\quad\text{or}\quad x^3=16.
+          \]
+        </p>
+        <p>
+          If \(x^3=0\), then \(x=0\) and \(y=\dfrac{0^2}{2}=0\), giving the point \((0,0)\), which we are told to exclude.
+        </p>
+        <p>
+          If \(x^3=16\), then \(x=\sqrt[3]{16}\) and
+          \[
+            y=\frac{x^2}{2}=\frac{\bigl(\sqrt[3]{16}\bigr)^2}{2}.
+          \]
+        </p>
+        <p>
+          Therefore, a point (other than \((0,0)\)) where the curve has a horizontal tangent is
+          \[
+            \left(\sqrt[3]{16},\ \frac{\bigl(\sqrt[3]{16}\bigr)^2}{2}\right).
+          \]
+        </p>
+      </details>
+      <details class="video">
+      <summary>Video Solution</summary>
+      <p>
+          A video solution is available
+          <a href="https://drive.google.com/file/d/1RJBykmeOyb5mpcXnNMFcHCrglrhCmh4R/view?usp=sharing"
+             target="_blank" rel="noopener">here</a>.
+        </p>
+  </details>
+    </li>
+
+    <!-- Ch-9 -->
+    <li id="module4-ch-9">
+      <a class="q-label" href="#module4-ch-9">Module 4 — Challenging — 9</a><br>
+      Very challenging!  
+      Find the equation of the tangent line to
+      \[
+        y=\frac{5}{x}
+      \]
+      which passes through the point \((5,0)\).  
+      (Hint: the point \((5,0)\) is not on the curve \(y=\dfrac{5}{x}\).)
+
+      <details class="answer"><summary>Answer</summary>
+        <p>
+          \[
+            y=-\frac{4}{5}x+4.
+          \]
+        </p>
+      </details>
+
+      <details class="solution"><summary>Full Solution</summary>
+        <p>
+          Let the tangent touch the curve \(y=\dfrac{5}{x}\) at some point \((a,\frac{5}{a})\) with \(a\neq 0\).
+        </p>
+        <p>
+          First find the derivative of \(y=\dfrac{5}{x}\):
+          \[
+            y=5x^{-1}\quad\Rightarrow\quad y'=-5x^{-2}=-\frac{5}{x^2}.
+          \]
+          At \(x=a\), the slope of the tangent is
+          \[
+            m=y'(a)=-\frac{5}{a^2}.
+          \]
+        </p>
+        <p>
+          The equation of the tangent line at \((a,\frac{5}{a})\) is
+          \[
+            y-\frac{5}{a}=m(x-a)
+            =-\frac{5}{a^2}(x-a).
+          \]
+        </p>
+        <p>
+          This line must pass through \((5,0)\). Substitute \(x=5\), \(y=0\):
+          \[
+            0-\frac{5}{a}=-\frac{5}{a^2}(5-a).
+          \]
+        </p>
+        <p>
+          Simplify by dividing both sides by \(-\frac{5}{a^2}\) (nonzero):
+          \[
+            \frac{5}{a}\cdot\frac{a^2}{5}=5-a
+            \quad\Rightarrow\quad a=5-a.
+          \]
+          So
+          \[
+            2a=5\quad\Rightarrow\quad a=\frac{5}{2}.
+          \]
+        </p>
+        <p>
+          The point of tangency is
+          \[
+            \left(a,\frac{5}{a}\right)
+            =\left(\frac{5}{2},\frac{5}{5/2}\right)
+            =\left(\frac{5}{2},2\right).
+          \]
+          The slope is
+          \[
+            m=y'(a)
+            =-\frac{5}{(5/2)^2}
+            =-\frac{5}{25/4}
+            =-\frac{20}{25}
+            =-\frac{4}{5}.
+          \]
+        </p>
+        <p>
+          Now write the equation of the line through \((5,0)\) with slope \(-\dfrac{4}{5}\):
+          \[
+            y-0=-\frac{4}{5}(x-5)
+            \quad\Rightarrow\quad
+            y=-\frac{4}{5}x+4.
+          \]
+        </p>
+      </details>
+    </li>
+  </ol>
+</section>
+
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    const yearEl = document.getElementById('year');
+    if (yearEl) { yearEl.textContent = new Date().getFullYear(); }
+  </script>
+</body>
+</html>
